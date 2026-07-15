@@ -1,0 +1,958 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>श्रीहित चौरासी जी — कुंज लीला</title>
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#4a1220">
+<link rel="icon" href="icon-192.png">
+<link rel="apple-touch-icon" href="icon-192.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="चौरासी जी">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Yatra+One&family=Noto+Serif+Devanagari:wght@400;600;700&family=Poppins:wght@400;500;600&display=swap');
+
+  :root{
+    --maroon:#4a1220;
+    --maroon-deep:#2c0a13;
+    --parchment:#f4e3ba;
+    --parchment-light:#faf1da;
+    --gold:#c8952f;
+    --gold-light:#e9c877;
+    --teal:#1b6b66;
+    --vermilion:#a83324;
+    --ink:#3a1a12;
+  }
+
+  *{box-sizing:border-box;}
+
+  body{
+    margin:0;
+    min-height:100vh;
+    background:
+      radial-gradient(circle at 20% 10%, rgba(200,149,47,0.10), transparent 40%),
+      radial-gradient(circle at 80% 90%, rgba(27,107,102,0.10), transparent 45%),
+      var(--parchment);
+    color:var(--ink);
+    font-family:'Noto Serif Devanagari', serif;
+    padding-bottom:40px;
+  }
+
+  /* ---------- header ---------- */
+  header{
+    background:
+      repeating-linear-gradient(135deg, rgba(200,149,47,0.10) 0 2px, transparent 2px 22px),
+      linear-gradient(180deg, var(--maroon) 0%, var(--maroon-deep) 100%);
+    color:var(--parchment-light);
+    padding:22px 16px 26px;
+    text-align:center;
+    border-bottom:3px solid var(--gold);
+    position:relative;
+  }
+  header .eyebrow{
+    font-family:'Poppins',sans-serif;
+    letter-spacing:3px;
+    font-size:11px;
+    text-transform:uppercase;
+    color:var(--gold-light);
+    margin-bottom:6px;
+  }
+  header h1{
+    font-family:'Yatra One', cursive;
+    font-size:clamp(28px,7vw,42px);
+    margin:0;
+    color:var(--parchment-light);
+    text-shadow:0 2px 0 rgba(0,0,0,0.25);
+  }
+  header p.sub{
+    margin:6px 0 0;
+    font-size:14px;
+    color:var(--gold-light);
+    opacity:0.9;
+  }
+  .score-pill{
+    position:absolute;
+    top:18px; right:14px;
+    background:var(--gold);
+    color:var(--maroon-deep);
+    font-family:'Poppins',sans-serif;
+    font-weight:600;
+    font-size:12px;
+    padding:6px 12px;
+    border-radius:999px;
+    box-shadow:0 2px 4px rgba(0,0,0,0.3);
+  }
+
+  /* vine divider */
+  .vine{
+    height:14px;
+    background-image: radial-gradient(circle, var(--gold) 2px, transparent 2.5px);
+    background-size:18px 14px;
+    background-position:center;
+    opacity:0.55;
+  }
+
+  /* ---------- nav tabs ---------- */
+  nav{
+    display:flex;
+    overflow-x:auto;
+    gap:8px;
+    padding:14px 12px 4px;
+    max-width:640px;
+    margin:0 auto;
+  }
+  nav button{
+    flex:0 0 auto;
+    font-family:'Poppins',sans-serif;
+    font-size:13px;
+    font-weight:500;
+    padding:9px 14px;
+    border-radius:999px;
+    border:1.5px solid var(--maroon);
+    background:transparent;
+    color:var(--maroon);
+    cursor:pointer;
+    white-space:nowrap;
+    transition:all .15s ease;
+  }
+  nav button.active{
+    background:var(--maroon);
+    color:var(--parchment-light);
+    box-shadow:0 2px 6px rgba(74,18,32,0.35);
+  }
+
+  main{
+    max-width:640px;
+    margin:0 auto;
+    padding:18px 16px 10px;
+  }
+
+  h2.game-title{
+    font-family:'Yatra One',cursive;
+    color:var(--maroon);
+    font-size:24px;
+    margin:2px 0 4px;
+    text-align:center;
+  }
+  p.game-desc{
+    text-align:center;
+    font-family:'Poppins',sans-serif;
+    font-size:12.5px;
+    color:#6b4a3a;
+    margin:0 0 18px;
+  }
+
+  /* ---------- jharokha arch card ---------- */
+  .jharokha{
+    background:var(--parchment-light);
+    border:2px solid var(--gold);
+    border-radius:60px 60px 14px 14px / 70px 70px 14px 14px;
+    padding:34px 20px 24px;
+    position:relative;
+    box-shadow:0 6px 18px rgba(74,18,32,0.18);
+    margin-bottom:18px;
+  }
+  .jharokha::before{
+    content:'☙';
+    position:absolute;
+    top:8px; left:50%;
+    transform:translateX(-50%);
+    color:var(--gold);
+    font-size:18px;
+  }
+  .pada-number{
+    font-family:'Yatra One',cursive;
+    color:var(--vermilion);
+    font-size:15px;
+    text-align:center;
+    margin-bottom:6px;
+    letter-spacing:1px;
+  }
+  .pada-text{
+    font-size:19px;
+    line-height:2;
+    text-align:center;
+    color:var(--ink);
+    white-space:pre-line;
+  }
+  .pada-text.blur{
+    filter:blur(0px);
+  }
+
+  /* buttons */
+  .btn-row{
+    display:flex;
+    gap:10px;
+    justify-content:center;
+    flex-wrap:wrap;
+    margin-top:6px;
+  }
+  .btn{
+    font-family:'Poppins',sans-serif;
+    font-weight:500;
+    font-size:13.5px;
+    padding:10px 18px;
+    border-radius:10px;
+    border:none;
+    cursor:pointer;
+    transition:transform .1s ease, box-shadow .1s ease;
+  }
+  .btn:active{ transform:scale(0.96); }
+  .btn-primary{ background:var(--maroon); color:var(--parchment-light); }
+  .btn-gold{ background:var(--gold); color:var(--maroon-deep); }
+  .btn-teal{ background:var(--teal); color:var(--parchment-light); }
+  .btn-outline{ background:transparent; color:var(--maroon); border:1.5px solid var(--maroon); }
+  .btn:disabled{ opacity:0.45; cursor:default; }
+
+  /* fill blank */
+  .blank-line{
+    font-size:18px;
+    line-height:1.9;
+    text-align:center;
+    margin-bottom:14px;
+  }
+  .blank-slot{
+    display:inline-block;
+    min-width:70px;
+    border-bottom:2px dashed var(--vermilion);
+    color:var(--vermilion);
+    font-weight:700;
+  }
+  .feedback{
+    text-align:center;
+    font-family:'Poppins',sans-serif;
+    font-size:13.5px;
+    margin-bottom:10px;
+    min-height:18px;
+  }
+  .feedback.correct{ color:var(--teal); font-weight:600; }
+  .feedback.wrong{ color:var(--vermilion); font-weight:600; }
+
+  /* line order */
+  .order-target{
+    min-height:56px;
+    border:2px dashed var(--gold);
+    border-radius:12px;
+    padding:8px;
+    display:flex;
+    flex-direction:column;
+    gap:6px;
+    margin-bottom:14px;
+    background:#fffdf6;
+  }
+  .order-target .placeholder{
+    font-family:'Poppins',sans-serif;
+    font-size:12px;
+    color:#a08a6b;
+    text-align:center;
+    padding:10px;
+  }
+  .tile{
+    background:var(--parchment-light);
+    border:1.5px solid var(--maroon);
+    border-radius:8px;
+    padding:9px 12px;
+    font-size:16px;
+    cursor:pointer;
+    text-align:center;
+  }
+  .tile.chosen{
+    background:var(--maroon);
+    color:var(--parchment-light);
+  }
+  .pool{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    justify-content:center;
+    margin-bottom:14px;
+  }
+
+  /* matching */
+  .match-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:10px;
+    margin-bottom:14px;
+  }
+  .match-item{
+    background:var(--parchment-light);
+    border:1.5px solid var(--maroon);
+    border-radius:10px;
+    padding:12px 8px;
+    font-size:15px;
+    text-align:center;
+    cursor:pointer;
+    line-height:1.5;
+  }
+  .match-item.selected{ background:var(--gold-light); border-color:var(--gold); }
+  .match-item.solved{ background:#d8ead6; border-color:var(--teal); color:#1b6b66; opacity:0.75; cursor:default; }
+  .match-item.wrong-flash{ background:#f3cfc9; border-color:var(--vermilion); }
+
+  /* quiz */
+  .quiz-options{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+    margin-bottom:8px;
+  }
+  .quiz-opt{
+    font-family:'Yatra One',cursive;
+    font-size:17px;
+    padding:12px;
+    border-radius:10px;
+    border:1.5px solid var(--maroon);
+    background:var(--parchment-light);
+    cursor:pointer;
+    text-align:center;
+  }
+  .quiz-opt.correct{ background:#d8ead6; border-color:var(--teal); }
+  .quiz-opt.wrong{ background:#f3cfc9; border-color:var(--vermilion); }
+  .quiz-opt:disabled{ cursor:default; }
+
+  .mic-row{
+    display:flex;
+    gap:8px;
+    justify-content:center;
+    flex-wrap:wrap;
+    margin-top:12px;
+    padding-top:12px;
+    border-top:1px dashed var(--gold);
+  }
+  .btn-mic{
+    background:var(--vermilion);
+    color:var(--parchment-light);
+  }
+  .btn-mic.recording{
+    background:#7a0d0d;
+    animation:pulseRec 1s infinite;
+  }
+  @keyframes pulseRec{
+    0%,100%{ box-shadow:0 0 0 0 rgba(122,13,13,0.5); }
+    50%{ box-shadow:0 0 0 8px rgba(122,13,13,0); }
+  }
+  .voice-tag{
+    font-family:'Poppins',sans-serif;
+    font-size:11px;
+    color:var(--teal);
+    text-align:center;
+    margin-top:6px;
+  }
+  .status-line{
+    text-align:center;
+    font-family:'Poppins',sans-serif;
+    font-size:12.5px;
+    color:#6b4a3a;
+    margin-top:4px;
+  }
+
+  .complete-msg{
+    text-align:center;
+    font-family:'Yatra One',cursive;
+    font-size:20px;
+    color:var(--teal);
+    margin:20px 0;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    * { transition:none !important; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="eyebrow">श्रीहित हरिवंश महाप्रभु</div>
+  <h1>चौरासी जी</h1>
+  <p class="sub">कुंज लीला — वाणी सीखने का खेल</p>
+  <div class="score-pill">अंक: <span id="scoreDisplay">0</span></div>
+</header>
+<div class="vine"></div>
+
+<nav id="navTabs"></nav>
+
+<main id="app"></main>
+
+<script>
+/* ---------------- DATA ---------------- */
+// Complete couplets only (a few source screenshots were cut off mid-verse,
+// so only the fully legible portions of those padas are included).
+const PADAS = [
+  { number:32, lines:[
+    "आजु वन क्रीड़त श्यामा-श्याम ।",
+    "सुभग बनी निशि शरद चाँदनी, रुचिर कुंज अभिराम ॥",
+    "खंडन अधर करत परिरम्भन, ऐंचत जघन दुकूल।",
+    "उर नख-पात तिरीछी चितवन, दंपति रस समतूल ॥",
+    "वे भुज पीन पयोधर परसत, वामदशा पिय हार ।",
+    "बसनन पीक अलक आकर्षत, समर-श्रमित सतमार ॥",
+    "पल-पल प्रबल चौंप रस-लम्पट, अति सुन्दर सुकुमार ।"
+  ]},
+  { number:33, lines:[
+    "आजु वन राजत जुगल किशोर ।",
+    "नंद नँदन वृषभानु नन्दिनी, उठे उनींदे भोर ॥",
+    "डगमगात पग परत शिथिल गति, परसत नख ससि-छोर ।",
+    "दसन-वसन खंडित मषि मंडित, गंड तिलक कछु थोर ॥",
+    "दुरत न कच-करजन के रोके, अरुन नैंन अलिचोर ।",
+    "(जै श्री) हित हरिवंश सँभार न तन-मन, सुरत-समुद्र झकोर ॥"
+  ]},
+  { number:34, lines:[
+    "वन की कुंजन-कुंजन डोलन ।",
+    "निकसत निपट साँकरी बीथिन, परसत नाहिं निचोलन ॥",
+    "प्रात काल रजनी सब जागे, सूचत सुख द्ग लोलन ।",
+    "आलसवन्त अरुण अति व्याकुल, कछु उपजत गति गोलन ॥",
+    "निर्त्तन भृकुटि वदन अम्बुज मृदु, सरस हास मधु बोलन ।",
+    "अति आसक्त लाल अलि लम्पट, बस कीने बिनु मोलन ॥",
+    "बिलुलित सिथिल श्याम छूटी लट, राजत रुचिर कपोलन ।"
+  ]},
+  { number:39, lines:[
+    "खेल्यौ लाल चाहत रवन ।",
+    "रचि-रचि अपने हाथ सँवारयौ, निकुंज भवन ॥",
+    "रजनी शरद मंद सौरभ सौं, शीतल पवन ।",
+    "तो बिनु कुँवरि काम की वेदन, मेटव कवन ॥",
+    "चलहिं न चपल बाल-मृगनैंनी, तजिव मवन ।",
+    "(जै श्री) हित हरिवंश मिलव प्यारे की, आरति-दवन ॥"
+  ]},
+  { number:48, lines:[
+    "बनी वृषभानु नन्दिनी आजु ।",
+    "भूषन-वसन विविध पहिरे तन, पिय मोहन हित साजु ॥",
+    "हाव-भाव लावन्य भृकुटि लट, हरत जुवति-जन पाजु ।",
+    "ताल भेद औघर सुर सूचत, नूपुर किंकिणि बाजु ॥",
+    "नव निकुंज अभिराम श्याम सँग, नीकौ बन्यौ समाजु ।",
+    "(जै श्री) हित हरिवंश विलास-रास जुत, जोरी अविचल राजु ॥"
+  ]},
+  { number:49, lines:[
+    "देखि सखी राधा पिय केलि ।",
+    "ये दोऊ खोरि, खिरक गिरि गहवर, बिहरत कुँवर कण्ठ भुज मेलि ॥",
+    "ये दोऊ नवलकिशोर रूप निधि, विटप तमाल कनक मनौं बेलि ।",
+    "अधर अदन चुम्बन-परिरम्भन, तन पुलकित आनँद रस झेलि ॥",
+    "पट-बंधन कंचुकि कुच परसत, कोप कपट निरखत कर पेलि ।",
+    "(जै श्री) हित हरिवंश लाल रस लंपट, धाइ धरत उर बीच सकेलि ॥"
+  ]},
+  { number:52, lines:[
+    "देखौ माई, सुन्दरता की सींवाँ ।",
+    "ब्रज नवतरुणि कदंब नागरी, निरखि करत अधग्रीवाँ ॥",
+    "जो कोऊ कोटि कलप लगि जीवै, रसना कोटिक पावै ।",
+    "तऊ रुचिर वदनारविंद की, शोभा कहत न आवै ॥",
+    "देव-लोक, भू-लोक, रसातल, सुनि कवि-कुल मति डरिये ।",
+    "सहज माधुरी अंग-अंग की, कहि कासौं पटतरिये ॥"
+  ]},
+  { number:53, lines:[
+    "देखौ माई अबला कै बल-रासि ।",
+    "अति गज मत्त निरंकुश मोहन, निरखि बँधे लट-पासि ॥",
+    "अब ही पंगु भई मन की गति, बिनु उद्यम अनियास ।",
+    "तब की कहा कहौं जब पिय प्रति, चाहत भृकुटि विलास ॥",
+    "कच संजमन व्याज भुज दरसत, मुसिकन वदन विकास ।",
+    "हा-हरिवंश अनीति रीति हित, कत डारत तन त्रास ॥"
+  ]},
+  { number:54, lines:[
+    "नयौ नेह, नव रंग, नयौ रस, नवल श्याम वृषभानु किशोरी ।",
+    "नव पीताम्बर, नवल चूनरी नई-नई बूँदन भीजत गोरी ॥",
+    "नव वृन्दावन हरित मनोहर, नव चातक बोलत मोर-मोरी ।",
+    "नव मुरली जु मलार नई गति, स्रवन सुनत आये घनघोरी ॥",
+    "नव भूषण नव मुकुट बिराजत, नई-नई उरप लेत थोरी-थोरी ।",
+    "(जै श्री) हित हरिवंश असीस देत मुख, चिरजीवौ भूतल यह जोरी ॥"
+  ]},
+  { number:56, lines:[
+    "हौं बलिजाऊ नागरी श्याम ।",
+    "ऐसे ही रंग करौ निशि-वासर, वृन्दाविपिन कुटी अभिराम ॥",
+    "हास विलास सुरत रस सींचन, पशुपति-दग्ध जिवावत काम।",
+    "(जै श्री) हित हरिवंश लोल लोचन अलि, करहु न सफल सकल सुखधाम ॥"
+  ]},
+  { number:73, lines:[
+    "खंजन मीन मृगज मद मेटत, कहा कहौं नैनन की बातें।",
+    "सुनि सुन्दरी कहाँ लौं सिखई, मोहन वसीकरन की घातैं ॥",
+    "बंक निसंक चपल अनियारे, अरुण श्याम सित रचे कहाँ तैं।",
+    "डरत न हरत परायौ सर्बसु, मृदु मधु मिव मादिक ट्ग पातैं ॥",
+    "नैकु प्रसन्न दृष्टि पूरण करि, नहिं मोतन चितयौ प्रमदा तैं ।",
+    "(जै श्री) हित हरिवंश हंस कल-गामिनि, भावै सो करहु प्रेम के नातें ॥"
+  ]}
+];
+
+/* ---------------- STATE ---------------- */
+let score = 0;
+function addScore(n){ score = Math.max(0, score+n); document.getElementById('scoreDisplay').textContent = score; }
+
+const TABS = [
+  { id:'flash', label:'🪷 फ्लैशकार्ड' },
+  { id:'blank', label:'✍️ रिक्त स्थान' },
+  { id:'order', label:'🔀 कड़ी जोड़ो' },
+  { id:'match', label:'🔗 मिलान' },
+  { id:'quiz',  label:'🎧 सुनो-पहचानो' }
+];
+let currentTab = 'flash';
+
+const navEl = document.getElementById('navTabs');
+TABS.forEach(t=>{
+  const b = document.createElement('button');
+  b.textContent = t.label;
+  b.dataset.id = t.id;
+  b.onclick = ()=>{ currentTab = t.id; render(); };
+  navEl.appendChild(b);
+});
+
+function updateNav(){
+  [...navEl.children].forEach(b=> b.classList.toggle('active', b.dataset.id===currentTab));
+}
+
+/* ---------------- TTS helper ---------------- */
+let hiVoice = null;
+function loadVoice(){
+  const voices = speechSynthesis.getVoices();
+  hiVoice = voices.find(v=>v.lang && v.lang.toLowerCase().startsWith('hi')) || null;
+}
+if('speechSynthesis' in window){
+  loadVoice();
+  speechSynthesis.onvoiceschanged = loadVoice;
+}
+function speak(text){
+  if(!('speechSynthesis' in window)) { alert('इस डिवाइस पर आवाज़ उपलब्ध नहीं है'); return; }
+  speechSynthesis.cancel();
+  const u = new SpeechSynthesisUtterance(text);
+  u.lang = 'hi-IN';
+  if(hiVoice) u.voice = hiVoice;
+  u.rate = 0.85;
+  speechSynthesis.speak(u);
+}
+
+/* ---------------- MY VOICE (persistent recordings via IndexedDB) ---------------- */
+const DB_NAME = 'chaurasiji-db';
+const STORE_NAME = 'voices';
+function openVoiceDB(){
+  return new Promise((resolve, reject)=>{
+    const req = indexedDB.open(DB_NAME, 1);
+    req.onupgradeneeded = ()=>{ req.result.createObjectStore(STORE_NAME); };
+    req.onsuccess = ()=> resolve(req.result);
+    req.onerror = ()=> reject(req.error);
+  });
+}
+async function getVoice(padaNumber){
+  try{
+    const db = await openVoiceDB();
+    return await new Promise((resolve)=>{
+      const tx = db.transaction(STORE_NAME, 'readonly');
+      const req = tx.objectStore(STORE_NAME).get(String(padaNumber));
+      req.onsuccess = ()=> resolve(req.result || null);
+      req.onerror = ()=> resolve(null);
+    });
+  }catch(e){ return null; }
+}
+async function saveVoice(padaNumber, dataUrl){
+  try{
+    const db = await openVoiceDB();
+    await new Promise((resolve)=>{
+      const tx = db.transaction(STORE_NAME, 'readwrite');
+      tx.objectStore(STORE_NAME).put(dataUrl, String(padaNumber));
+      tx.oncomplete = ()=> resolve();
+      tx.onerror = ()=> resolve();
+    });
+  }catch(e){ console.error('save voice failed', e); }
+}
+async function deleteVoice(padaNumber){
+  try{
+    const db = await openVoiceDB();
+    await new Promise((resolve)=>{
+      const tx = db.transaction(STORE_NAME, 'readwrite');
+      tx.objectStore(STORE_NAME).delete(String(padaNumber));
+      tx.oncomplete = ()=> resolve();
+      tx.onerror = ()=> resolve();
+    });
+  }catch(e){ console.error('delete voice failed', e); }
+}
+
+let mediaRecorder = null;
+let audioChunks = [];
+let recState = 'idle'; // idle | recording | saving
+
+function playVoice(dataUrl){
+  let player = document.getElementById('voicePlayer');
+  if(!player){
+    player = document.createElement('audio');
+    player.id = 'voicePlayer';
+    player.style.display = 'none';
+    document.body.appendChild(player);
+  }
+  player.src = dataUrl;
+  player.play().catch(()=>{});
+}
+
+async function startRecording(padaNumber, onDone){
+  try{
+    const stream = await navigator.mediaDevices.getUserMedia({ audio:true });
+    audioChunks = [];
+    mediaRecorder = new MediaRecorder(stream);
+    mediaRecorder.ondataavailable = e => { if(e.data.size>0) audioChunks.push(e.data); };
+    mediaRecorder.onstop = () => {
+      const blob = new Blob(audioChunks, { type:'audio/webm' });
+      const reader = new FileReader();
+      reader.onloadend = async () => {
+        recState = 'saving';
+        await saveVoice(padaNumber, reader.result);
+        recState = 'idle';
+        stream.getTracks().forEach(t=>t.stop());
+        onDone();
+      };
+      reader.readAsDataURL(blob);
+    };
+    mediaRecorder.start();
+    recState = 'recording';
+    onDone();
+  }catch(e){
+    alert('माइक्रोफ़ोन एक्सेस नहीं मिल पाया। कृपया ब्राउज़र सेटिंग में माइक्रोफ़ोन की अनुमति दें।');
+  }
+}
+function stopRecording(){
+  if(mediaRecorder && mediaRecorder.state === 'recording'){
+    mediaRecorder.stop();
+  }
+}
+
+function shuffle(arr){
+  const a = arr.slice();
+  for(let i=a.length-1;i>0;i--){
+    const j = Math.floor(Math.random()*(i+1));
+    [a[i],a[j]]=[a[j],a[i]];
+  }
+  return a;
+}
+function pick(arr){ return arr[Math.floor(Math.random()*arr.length)]; }
+
+/* ================= FLASHCARDS ================= */
+let flashIndex = 0;
+let flashFlipped = false;
+let flashOrder = shuffle(PADAS.map((_,i)=>i));
+
+async function renderFlash(){
+  const p = PADAS[flashOrder[flashIndex]];
+  const myVoice = await getVoice(p.number);
+  const app = document.getElementById('app');
+
+  let micRowHtml = '';
+  if(recState === 'recording'){
+    micRowHtml = `<button class="btn btn-mic recording" id="stopRecBtn">⏹️ रोकें</button>`;
+  } else if(recState === 'saving'){
+    micRowHtml = `<button class="btn btn-mic" disabled>सहेजा जा रहा है...</button>`;
+  } else if(myVoice){
+    micRowHtml = `
+      <button class="btn btn-teal" id="playMyVoice">▶️ मेरी आवाज़</button>
+      <button class="btn btn-outline" id="reRecBtn">🎙️ फिर से रिकॉर्ड करें</button>
+      <button class="btn btn-outline" id="delRecBtn">🗑️ हटाएं</button>`;
+  } else {
+    micRowHtml = `<button class="btn btn-mic" id="startRecBtn">🎙️ अपनी आवाज़ रिकॉर्ड करें</button>`;
+  }
+
+  app.innerHTML = `
+    <h2 class="game-title">फ्लैशकार्ड</h2>
+    <p class="game-desc">कार्ड पर टैप करें — पद देखें और सुनें</p>
+    <div class="jharokha" id="flashCard" style="cursor:pointer;">
+      <div class="pada-number">पद ${p.number}</div>
+      <div class="pada-text">${flashFlipped ? p.lines.join('\n') : '👆 टैप करें पद देखने के लिए'}</div>
+    </div>
+    <div class="btn-row">
+      <button class="btn btn-outline" id="prevBtn">← पिछला</button>
+      <button class="btn btn-teal" id="listenBtn">🔊 सुनो</button>
+      <button class="btn btn-outline" id="nextBtn">अगला →</button>
+    </div>
+    <div class="btn-row">
+      <button class="btn btn-gold" id="shuffleBtn">🔀 फेरबदल करें</button>
+    </div>
+    <p class="status-line">${flashIndex+1} / ${flashOrder.length}</p>
+    <div class="mic-row">${micRowHtml}</div>
+    ${myVoice ? '<p class="voice-tag">🎤 इस पद की आपकी अपनी रिकॉर्डिंग सुरक्षित है</p>' : ''}
+  `;
+
+  document.getElementById('flashCard').onclick = ()=>{ flashFlipped = !flashFlipped; renderFlash(); };
+  document.getElementById('prevBtn').onclick = (e)=>{ e.stopPropagation(); flashIndex=(flashIndex-1+flashOrder.length)%flashOrder.length; flashFlipped=false; renderFlash(); };
+  document.getElementById('nextBtn').onclick = (e)=>{ e.stopPropagation(); flashIndex=(flashIndex+1)%flashOrder.length; flashFlipped=false; renderFlash(); };
+  document.getElementById('shuffleBtn').onclick = (e)=>{ e.stopPropagation(); flashOrder=shuffle(PADAS.map((_,i)=>i)); flashIndex=0; flashFlipped=false; renderFlash(); };
+  document.getElementById('listenBtn').onclick = (e)=>{ e.stopPropagation(); speak(p.lines.join(' ')); };
+
+  const startBtn = document.getElementById('startRecBtn');
+  if(startBtn) startBtn.onclick = (e)=>{ e.stopPropagation(); startRecording(p.number, renderFlash); };
+  const stopBtn = document.getElementById('stopRecBtn');
+  if(stopBtn) stopBtn.onclick = (e)=>{ e.stopPropagation(); stopRecording(); };
+  const reRecBtn = document.getElementById('reRecBtn');
+  if(reRecBtn) reRecBtn.onclick = (e)=>{ e.stopPropagation(); startRecording(p.number, renderFlash); };
+  const playBtn = document.getElementById('playMyVoice');
+  if(playBtn) playBtn.onclick = (e)=>{ e.stopPropagation(); playVoice(myVoice); };
+  const delBtn = document.getElementById('delRecBtn');
+  if(delBtn) delBtn.onclick = async (e)=>{ e.stopPropagation(); await deleteVoice(p.number); renderFlash(); };
+}
+
+/* ================= FILL IN THE BLANK (tap to choose) ================= */
+let blankState = {};
+
+function wordPool(){
+  const pool = new Set();
+  PADAS.forEach(p=> p.lines.forEach(l=>{
+    l.split(/\s+/).forEach(w=>{
+      const clean = w.replace(/[।॥,()]/g,'').trim();
+      if(clean.length>=3) pool.add(clean);
+    });
+  }));
+  return [...pool];
+}
+
+function generateOptions(target){
+  const pool = wordPool().filter(w=>w!==target);
+  const distractors = shuffle(pool).slice(0,3);
+  return shuffle([...distractors, target]);
+}
+
+function newBlank(){
+  const p = pick(PADAS);
+  const lineIdx = Math.floor(Math.random()*p.lines.length);
+  const line = p.lines[lineIdx];
+  const words = line.split(/(\s+)/).filter(w=>w.trim().length>=3 && !/^[।॥,\-()]+$/.test(w));
+  const target = pick(words).trim();
+  const options = generateOptions(target);
+  blankState = { pada:p, lineIdx, line, target, options, answered:false, chosen:null };
+  renderBlank();
+}
+
+function renderBlank(){
+  const {pada,line,target,options,answered,chosen} = blankState;
+  const blankMarker = '<span class="blank-slot">▁▁▁▁</span>';
+  const displayLine = line.replace(target, answered ? `<span class="blank-slot">${target}</span>` : blankMarker);
+  const app = document.getElementById('app');
+  app.innerHTML = `
+    <h2 class="game-title">रिक्त स्थान भरें</h2>
+    <p class="game-desc">पद ${pada.number} की पंक्ति — सही शब्द चुनें</p>
+    <div class="jharokha">
+      <div class="blank-line">${displayLine}</div>
+    </div>
+    <div class="quiz-options" id="blankOpts"></div>
+    <div class="btn-row">
+      ${answered ? '<button class="btn btn-primary" id="nextBlank">अगला पद →</button>' : ''}
+      <button class="btn btn-teal" id="listenBlank">🔊 पंक्ति सुनो</button>
+    </div>
+  `;
+  document.getElementById('listenBlank').onclick = ()=> speak(line);
+  const optWrap = document.getElementById('blankOpts');
+  options.forEach(opt=>{
+    const b = document.createElement('button');
+    b.className = 'quiz-opt';
+    b.textContent = opt;
+    if(answered){
+      b.disabled = true;
+      if(opt===target) b.classList.add('correct');
+      else if(opt===chosen) b.classList.add('wrong');
+    } else {
+      b.onclick = ()=>{
+        blankState.answered = true;
+        blankState.chosen = opt;
+        if(opt===target) addScore(10); else addScore(-2);
+        renderBlank();
+      };
+    }
+    optWrap.appendChild(b);
+  });
+  if(answered) document.getElementById('nextBlank').onclick = newBlank;
+}
+
+/* ================= LINE ORDER ================= */
+let orderState = {};
+function newOrder(){
+  const candidates = PADAS.filter(p=>p.lines.length>=4);
+  const p = pick(candidates);
+  const n = Math.min(5, p.lines.length);
+  const correct = p.lines.slice(0, n);
+  const shuffled = shuffle(correct);
+  orderState = { pada:p, correct, shuffled, chosen:[], done:false };
+  renderOrder();
+}
+function renderOrder(){
+  const {pada, shuffled, chosen, done} = orderState;
+  const remaining = shuffled.filter(l=> !chosen.includes(l) || chosen.filter(c=>c===l).length < shuffled.filter(s=>s===l).length);
+  // simpler: track used indices instead of values to allow duplicates safely
+  const app = document.getElementById('app');
+  app.innerHTML = `
+    <h2 class="game-title">कड़ी जोड़ो</h2>
+    <p class="game-desc">पद ${pada.number} की पंक्तियों को सही क्रम में लगाएँ</p>
+    <div class="order-target" id="orderTarget">
+      ${chosen.length===0 ? '<div class="placeholder">नीचे से पंक्तियाँ चुनकर यहाँ क्रम बनाएँ</div>' :
+        chosen.map((l,i)=>`<div class="tile chosen">${i+1}. ${l}</div>`).join('')}
+    </div>
+    <div class="pool" id="orderPool"></div>
+    <div class="feedback" id="orderFeedback"></div>
+    <div class="btn-row">
+      <button class="btn btn-outline" id="resetOrder">↺ फिर से</button>
+      <button class="btn btn-primary" id="checkOrder" ${chosen.length<shuffled.length?'disabled':''}>जाँचें</button>
+      <button class="btn btn-teal" id="listenOrder">🔊 सुनो</button>
+    </div>
+  `;
+  const poolEl = document.getElementById('orderPool');
+  orderState.usedIdx = orderState.usedIdx || [];
+  shuffled.forEach((l,idx)=>{
+    if(orderState.usedIdx.includes(idx)) return;
+    const t = document.createElement('div');
+    t.className = 'tile';
+    t.textContent = l;
+    t.onclick = ()=>{
+      orderState.chosen.push(l);
+      orderState.usedIdx.push(idx);
+      renderOrder();
+    };
+    poolEl.appendChild(t);
+  });
+  document.getElementById('resetOrder').onclick = ()=>{
+    orderState.chosen = []; orderState.usedIdx = []; renderOrder();
+  };
+  document.getElementById('listenOrder').onclick = ()=> speak(pada.lines.join(' '));
+  document.getElementById('checkOrder').onclick = ()=>{
+    const fb = document.getElementById('orderFeedback');
+    const isCorrect = orderState.chosen.every((l,i)=> l===orderState.correct[i]);
+    if(isCorrect){
+      fb.textContent = '✅ बिल्कुल सही क्रम!';
+      fb.className='feedback correct';
+      addScore(15);
+    } else {
+      fb.textContent = '❌ क्रम सही नहीं है, फिर से कोशिश करें।';
+      fb.className='feedback wrong';
+    }
+  };
+}
+
+/* ================= MATCHING ================= */
+let matchState = {};
+function newMatch(){
+  const set = shuffle(PADAS).slice(0, Math.min(4, PADAS.length));
+  const numbers = set.map(p=>({key:p.number, type:'num', text:'पद '+p.number, pair:p.number}));
+  const openers = shuffle(set.map(p=>({key:p.number+'_l', type:'line', text:p.lines[0], pair:p.number})));
+  matchState = {
+    left: shuffle(numbers),
+    right: openers,
+    selectedLeft:null,
+    selectedRight:null,
+    solved:new Set(),
+    wrongFlash:null
+  };
+  renderMatch();
+}
+function renderMatch(){
+  const {left,right,solved} = matchState;
+  const app = document.getElementById('app');
+  const allSolved = solved.size === left.length;
+  app.innerHTML = `
+    <h2 class="game-title">पद मिलान</h2>
+    <p class="game-desc">पद संख्या को उसकी पहली पंक्ति से मिलाएँ</p>
+    <div class="match-grid" id="matchGrid"></div>
+    ${allSolved ? '<div class="complete-msg">🌸 वाह! सभी मिलान सही ॥</div>' : ''}
+    <div class="btn-row">
+      <button class="btn btn-gold" id="newRound">${allSolved? 'नया राउंड 🔁' : 'नया राउंड'}</button>
+    </div>
+  `;
+  const grid = document.getElementById('matchGrid');
+  left.forEach((item,i)=>{
+    const el = document.createElement('div');
+    el.className='match-item'+(solved.has(item.pair)?' solved':'')+(matchState.selectedLeft===i?' selected':'');
+    el.textContent = item.text;
+    if(!solved.has(item.pair)){
+      el.onclick = ()=> selectMatch('left', i);
+    }
+    grid.appendChild(el);
+  });
+  right.forEach((item,i)=>{
+    const el = document.createElement('div');
+    el.className='match-item'+(solved.has(item.pair)?' solved':'')+(matchState.selectedRight===i?' selected':'')+(matchState.wrongFlash===('r'+i)?' wrong-flash':'');
+    el.textContent = item.text;
+    if(!solved.has(item.pair)){
+      el.onclick = ()=> selectMatch('right', i);
+    }
+    grid.appendChild(el);
+  });
+  document.getElementById('newRound').onclick = newMatch;
+}
+function selectMatch(side, idx){
+  if(side==='left') matchState.selectedLeft = idx;
+  else matchState.selectedRight = idx;
+  matchState.wrongFlash = null;
+  if(matchState.selectedLeft!=null && matchState.selectedRight!=null){
+    const l = matchState.left[matchState.selectedLeft];
+    const r = matchState.right[matchState.selectedRight];
+    if(l.pair === r.pair){
+      matchState.solved.add(l.pair);
+      addScore(8);
+      matchState.selectedLeft = null;
+      matchState.selectedRight = null;
+    } else {
+      matchState.wrongFlash = 'r'+matchState.selectedRight;
+      const sl = matchState.selectedLeft, sr = matchState.selectedRight;
+      setTimeout(()=>{
+        matchState.selectedLeft=null; matchState.selectedRight=null; matchState.wrongFlash=null; renderMatch();
+      }, 550);
+    }
+  }
+  renderMatch();
+}
+
+/* ================= LISTEN & GUESS QUIZ ================= */
+let quizState = {};
+function newQuiz(){
+  const p = pick(PADAS);
+  const line = pick(p.lines.length>1 ? p.lines.slice(0,2) : p.lines);
+  let opts = shuffle(PADAS.filter(x=>x.number!==p.number)).slice(0,3).map(x=>x.number);
+  opts.push(p.number);
+  opts = shuffle(opts);
+  quizState = { pada:p, line, opts, answered:false };
+  renderQuiz();
+}
+function renderQuiz(){
+  const {pada, line, opts, answered, chosenNum} = quizState;
+  const app = document.getElementById('app');
+  app.innerHTML = `
+    <h2 class="game-title">सुनो-पहचानो</h2>
+    <p class="game-desc">पंक्ति सुनें और बताएं यह किस पद संख्या से है</p>
+    <div class="jharokha" style="text-align:center;">
+      <button class="btn btn-teal" id="playQuiz" style="font-size:16px;">🔊 सुनो</button>
+    </div>
+    <div class="quiz-options" id="quizOpts"></div>
+    ${answered ? `<div class="jharokha"><div class="pada-number">पद ${pada.number}</div><div class="pada-text">${pada.lines.join('\n')}</div></div>` : ''}
+    <div class="btn-row">
+      ${answered ? '<button class="btn btn-primary" id="nextQuiz">अगला →</button>' : ''}
+    </div>
+  `;
+  document.getElementById('playQuiz').onclick = ()=> speak(line);
+  const optWrap = document.getElementById('quizOpts');
+  opts.forEach(n=>{
+    const b = document.createElement('button');
+    b.className='quiz-opt';
+    b.textContent = 'पद '+n;
+    if(answered){
+      b.disabled = true;
+      if(n===pada.number) b.classList.add('correct');
+      else if(n===chosenNum) b.classList.add('wrong');
+    } else {
+      b.onclick = ()=>{
+        quizState.answered = true;
+        quizState.chosenNum = n;
+        if(n===pada.number) addScore(12); else addScore(-2);
+        renderQuiz();
+      };
+    }
+    optWrap.appendChild(b);
+  });
+  if(answered) document.getElementById('nextQuiz').onclick = newQuiz;
+  if(!answered) speak(line);
+}
+
+/* ---------------- ROUTER ---------------- */
+function render(){
+  updateNav();
+  if(currentTab==='flash') renderFlash();
+  else if(currentTab==='blank') newBlank();
+  else if(currentTab==='order') newOrder();
+  else if(currentTab==='match') newMatch();
+  else if(currentTab==='quiz') newQuiz();
+}
+render();
+
+if('serviceWorker' in navigator){
+  window.addEventListener('load', ()=>{
+    navigator.serviceWorker.register('service-worker.js').catch(()=>{});
+  });
+}
+</script>
+</body>
+</html>
